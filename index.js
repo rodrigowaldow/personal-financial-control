@@ -1,9 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const routes = require('./routes/routes');
-const path = require('path');
-const dotenv = require('dotenv');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import routes from './routes/routes.js';
+import path from 'path';
+import dotenv from 'dotenv';
 
 /**
  * Faz a leitura do arquivo
@@ -18,13 +18,13 @@ app.use(express.json());
 /**
  * Vinculando o React ao app
  */
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(path.resolve(), 'client/build')));
 
 /**
  * Rota raiz
  */
-app.get('/api/', (_, response) => {
-  response.send({
+app.get('/api/', (_, res) => {
+  res.send({
     message:
       'Bem-vindo à API de lançamentos. Acesse /transaction e siga as orientações',
   });
@@ -41,6 +41,7 @@ app.use('/api/transaction', routes);
 const { DB_CONNECTION } = process.env;
 
 console.log('Iniciando conexão ao MongoDB...');
+let connectedToMongoDB;
 mongoose.connect(
   DB_CONNECTION,
   {

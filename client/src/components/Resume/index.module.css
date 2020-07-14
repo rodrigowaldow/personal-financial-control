@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.each {
+  width: 25%;
+  text-align: center;
+}
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.value {
+  font-size: 18px;
+}
