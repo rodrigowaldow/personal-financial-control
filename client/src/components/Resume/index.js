@@ -7,6 +7,7 @@ export default function Resume({ transactions }) {
   const [transactionsPositive, setTransactionsPositive] = useState();
   const [transactionsNegative, setTransactionsNegative] = useState();
   const [totalMoney, setTotalMoney] = useState();
+  const [typeColor, setTypeColor] = useState(true);
 
   useEffect(() => {
     const size = transactions.length;
@@ -29,6 +30,7 @@ export default function Resume({ transactions }) {
     }, 0);
 
     const total = totalPositive - totalNegative;
+    setTypeColor(total > 0 ? true : false);
 
     setTransactionsPositive(toBRL(totalPositive));
     setTransactionsNegative(toBRL(totalNegative));
@@ -39,19 +41,27 @@ export default function Resume({ transactions }) {
     <div className={style.container}>
       <section className={style.each}>
         <span className={style.title}>Lançamentos: </span>
-        <span className={style.value}>{numTransactions}</span>
+        <span>{numTransactions}</span>
       </section>
       <section className={style.each}>
         <span className={style.title}>Receitas: </span>
-        <span className={style.value}>{transactionsPositive}</span>
+        <span className={`${style.value} ${style.green}`}>
+          {transactionsPositive}
+        </span>
       </section>
       <section className={style.each}>
         <span className={style.title}>Despesas: </span>
-        <span className={style.value}>{transactionsNegative}</span>
+        <span className={`${style.value} ${style.red}`}>
+          -{transactionsNegative}
+        </span>
       </section>
       <section className={style.each}>
         <span className={style.title}>Saldo: </span>
-        <span className={style.value}>{totalMoney}</span>
+        <span
+          className={`${style.value} ${typeColor ? style.green : style.red}`}
+        >
+          {totalMoney}
+        </span>
       </section>
     </div>
   );

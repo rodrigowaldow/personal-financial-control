@@ -38,7 +38,7 @@ const findAll = async (req, res) => {
     : { yearMonth: yearMonth };
 
   try {
-    const transaction = await TransactionModel.find(condition);
+    const transaction = await TransactionModel.find(condition).sort({ day: 1 });
     res.send(transaction);
   } catch (error) {
     res
@@ -50,7 +50,7 @@ const findAll = async (req, res) => {
 const findOne = async (req, res) => {
   const id = req.params.id;
   try {
-    const transaction = await TransactionModel.findById(id);
+    const transaction = await TransactionModel.findById(id, { _id: 0 });
     res.send(transaction);
   } catch (error) {
     res.status(500).send({ message: 'Erro ao buscar a transação id: ' + id });

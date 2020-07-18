@@ -5,8 +5,8 @@
   justify-content: flex-start;
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 5px;
-  margin: 20px 5px 5px;
+  padding: 5px 10px;
+  margin: 5px 10px;
 }
 
 .in {
@@ -54,10 +54,15 @@
 }
 
 .actions {
-  margin-left: 10px;
   display: flex;
   flex: 1 1 0%;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+}
+
+.actions svg {
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 10px;
 }

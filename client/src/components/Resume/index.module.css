@@ -9,8 +9,17 @@
 }
 .title {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
 }
 .value {
   font-size: 18px;
+  font-weight: 500;
+}
+
+.green {
+  color: rgb(22, 160, 133);
+}
+
+.red {
+  color: rgb(192, 57, 43);
 }
